@@ -1,0 +1,21 @@
+name: MYCI
+on: [push]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    container:
+      image: node:8-alpine
+    services:
+      nginx:
+        image: nginx
+        ports:
+          - 8080:80
+    steps:
+    - uses: actions/checkout@v1
+    - run: |
+        pwd
+        apk add curl
+        uname -a
+        ls -l /usr/local/bin
+        ls -l /usr/bin
+        curl nginx    
